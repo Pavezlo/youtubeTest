@@ -82,8 +82,8 @@ public class YourChannelPage {
         return new WebDriverWait(driver,40).until(ExpectedConditions.visibilityOfElementLocated(addDescription)).getText();
     }
 
-    public String fishingProcessingLoadingVideo (){
+    public YourChannelPage fishingProcessingLoadingVideo (){
         new WebDriverWait(driver,500).until(ExpectedConditions.presenceOfElementLocated(fishingProcessing));
-        return driver.findElement(fishingProcessing).getText();
+        return new YourChannelPage(driver);
     }
 }
