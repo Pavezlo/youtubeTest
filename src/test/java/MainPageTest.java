@@ -46,62 +46,19 @@ public class MainPageTest {
             System.out.println("Вариант выбора аккаунта.");
             registerGooglePage.clickRefreshAccount();
         }else if(registerGooglePage.checkGetInAccount().equals("Sign in"))
-            System.out.println("Варивант выбора неавтроизованного пользователя.");
+            System.out.println("Варивант выбора неавторизованного пользователя.");
         //ввод данных в поля гугл формы
-        registerGooglePage.typeEmail("pvorobyev03@gmail.com");
+        registerGooglePage.typeEmail("Тут эмейл");
         registerGooglePage.clickSendEmail();
-        registerGooglePage.typePassword("paterns13");
+        registerGooglePage.typePassword("Тут пароль");
         registerGooglePage.clickSendPassword();
         //проверка на вход в систему
         startPage.clickButtonImageAccount();
         String nameAccount = startPage.emailAccount();
-        Assert.assertEquals("Account name is not OK!","pvorobyev03@gmail.com",nameAccount);
+        Assert.assertEquals("Account name is not OK!","Тут эмейл",nameAccount);
     }
 
     @Test
-    public void getInVideo () {
-        //переключение на английский
-        startPage.changEnglishLanguage();
-        String buttonSingUp = startPage.checkButtonRegister();
-        Assert.assertEquals("Page language - English!", "SIGN IN", buttonSingUp);
-        RegisterGooglePage registerGooglePage = startPage.clickButtonRegister();
-
-        //проверка на предавторизацию пользователя
-        if (registerGooglePage.checkRefreshAccount().equals("Choose an account")) {
-            System.out.println("Вариант выбора аккаунта.");
-            registerGooglePage.clickRefreshAccount();
-        } else if (registerGooglePage.checkGetInAccount().equals("Sign in"))
-            System.out.println("Варивант выбора неавтроизованного пользователя.");
-
-        //ввод данных в поля гугл формы
-        registerGooglePage.typeEmail("pvorobyev03@gmail.com");
-        registerGooglePage.clickSendEmail();
-        registerGooglePage.typePassword("paterns13");
-        registerGooglePage.clickSendPassword();
-
-        //проверка на вход в систему
-        startPage.clickButtonImageAccount();
-        String nameAccount = startPage.emailAccount();
-        Assert.assertEquals("Account name OK!", "pvorobyev03@gmail.com", nameAccount);
-
-        //начало загрузки видео
-        YourChannelPage yourChannelPage = startPage.clickButtonYourChanel();
-        yourChannelPage.clickButtonUpLoudVideo();
-        yourChannelPage.uploadVideo(); //загрузка файла
-        yourChannelPage.clickRadioButtonForKids();
-        yourChannelPage.clickButtonDetailsNext();
-        yourChannelPage.clickButtonVideoElementsNext();
-        yourChannelPage.clickRadioButtonPrivate();
-        yourChannelPage.clickButtonVideoSave();
-        yourChannelPage.clickButtonCloseLoadingVideo();
-        String readyElements = yourChannelPage.waitReadyElements();
-        Assert.assertEquals("Add description video!", "Private", readyElements);
-        String fileName = yourChannelPage.addDescription();
-        Assert.assertEquals("Add description!", "Add description", fileName);
-
-//        Assert.assertSame("",readyElements,);
-    }
-        @Test
         public void getInVideo2 (){
             //переключение на английский
             startPage.changEnglishLanguage();
@@ -118,15 +75,15 @@ public class MainPageTest {
                 System.out.println("Варивант выбора неавтроизованного пользователя.");
 
             //ввод данных в поля гугл формы
-            registerGooglePage.typeEmail("VorobyevPavel145@gmail.com");
+            registerGooglePage.typeEmail("Тут эмейл");
             registerGooglePage.clickSendEmail();
-            registerGooglePage.typePassword("paterns13");
+            registerGooglePage.typePassword("Тут пароль");
             registerGooglePage.clickSendPassword();
 
             //проверка на вход в систему
             startPage.clickButtonImageAccount();
             String nameAccount = startPage.emailAccount();
-            Assert.assertEquals("Account name don't OK!","vorobyevpavel145@gmail.com",nameAccount);
+            Assert.assertEquals("Account name don't OK!","Тут эмейл",nameAccount);
 
             //начало загрузки видео
             YourChannelPage yourChannelPage = startPage.clickButtonYourChanel();
